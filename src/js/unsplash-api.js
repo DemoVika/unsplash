@@ -39,21 +39,21 @@ export class UnsplashAPI {
   //     });
   // }
 
-  async getPhotosByQuery(page, query) {
-    return await fetch(
-      `${
-        this.#BASE_URL
-      }?page=${page}&query=${query}&per_page=12&orientation=portrait&client_id=${
-        this.#API_KEY
-      }`
-    )
-      .then(res => {
-        return res.json();
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  // async getPhotosByQuery(page, query) {
+  //   return await fetch(
+  //     `${
+  //       this.#BASE_URL
+  //     }?page=${page}&query=${query}&per_page=12&orientation=portrait&client_id=${
+  //       this.#API_KEY
+  //     }`
+  //   )
+  //     .then(res => {
+  //       return res.json();
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
 
   /**
    * @param {string} newQuery
