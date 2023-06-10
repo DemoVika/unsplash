@@ -13,4 +13,18 @@ export class Unsplash {
       .then(response => response.json())
       .catch(error => console.log(error.message));
   }
+
+  async getPhotosByQuery(page) {
+    return await fetch(
+      `${this.#BASE_URL}?page=${page}&query=${
+        this.#query
+      }&per_page=9&orientation=portrait&client_id=${this.#API_KEY}`
+    )
+      .then(response => response.json())
+      .catch(error => console.log(error.message));
+  }
+
+  set query(newQuery) {
+    this.#query = newQuery;
+  }
 }
