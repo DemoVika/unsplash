@@ -23,38 +23,6 @@ export class UnsplashAPI {
       .catch(err => console.log(err));
   }
 
-  // async getPhotos(page, query = this.#query) {
-  //   return await fetch(
-  //     `${
-  //       this.#BASE_URL
-  //     }?page=${page}&query=${query}&per_page=12&orientation=portrait&client_id=${
-  //       this.#API_KEY
-  //     }`
-  //   )
-  //     .then(res => {
-  //       return res.json();
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
-
-  // async getPhotosByQuery(page, query) {
-  //   return await fetch(
-  //     `${
-  //       this.#BASE_URL
-  //     }?page=${page}&query=${query}&per_page=12&orientation=portrait&client_id=${
-  //       this.#API_KEY
-  //     }`
-  //   )
-  //     .then(res => {
-  //       return res.json();
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
-
   /**
    * @param {string} newQuery
    */
