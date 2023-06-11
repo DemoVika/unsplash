@@ -1,6 +1,9 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { UnsplashAPI } from './unsplash-api';
 import { createGallery } from './markup.js';
 
@@ -12,6 +15,12 @@ searchFormEl.addEventListener('submit', searchPhotos);
 const paginationContainerEl = document.getElementById(
   'tui-pagination-container'
 );
+
+const lightBox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  fileExt: false,
+});
 
 const options = {
   totalItems: 0,
@@ -25,6 +34,8 @@ const pagination = new Pagination(paginationContainerEl, options);
 pagination.on('afterMove', event => {
   unsplashAPI.getPhotos(event.page).then(({ results }) => {
     createGallery(results);
+
+    lightBox.refresh();
   });
 });
 
@@ -47,6 +58,8 @@ async function getPhotos() {
     pagination.reset(total);
 
     createGallery(results);
+
+    lightBox.refresh();
   } catch (error) {
     console.log(error);
   }

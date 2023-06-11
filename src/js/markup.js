@@ -1,15 +1,15 @@
 const galleryEl = document.querySelector('.js-gallery');
 
 export function createGallery(images) {
-  const markup = images
+  galleryEl.innerHTML = images
     .map(image => {
       return `
     <li class="gallery__item">
-      <img class="gallery-img" src="${image.urls.small}" alt="${image.alt_description}" loading="lazy" />
+      <a class="gallery-link" href="${image.urls.regular}">
+        <img class="gallery-image" src="${image.urls.small}" alt="${image.alt_description}" loading="lazy" />
+      </a>
     </li>
     `;
     })
     .join('');
-
-  galleryEl.innerHTML = markup;
 }
