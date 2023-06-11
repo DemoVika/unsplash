@@ -15,7 +15,7 @@ const paginationContainerEl = document.getElementById(
 
 const options = {
   totalItems: 0,
-  itemsPerPage: 20,
+  itemsPerPage: 16,
   visiblePages: 5,
   page: 1,
 };
@@ -28,11 +28,7 @@ pagination.on('afterMove', event => {
   });
 });
 
-unsplashAPI.getPhotos().then(({ total, results }) => {
-  pagination.reset(total);
-
-  createGallery(results);
-});
+getPhotos();
 
 function searchPhotos(e) {
   e.preventDefault();
@@ -42,9 +38,16 @@ function searchPhotos(e) {
 
   searchFormEl.reset();
 
-  unsplashAPI.getPhotos().then(({ total, results }) => {
+  getPhotos();
+}
+
+async function getPhotos() {
+  try {
+    const { total, results } = await unsplashAPI.getPhotos();
     pagination.reset(total);
 
     createGallery(results);
-  });
+  } catch (error) {
+    console.log(error);
+  }
 }

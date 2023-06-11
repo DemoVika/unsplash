@@ -8,7 +8,7 @@ export class UnsplashAPI {
   #axiosInstance = Axios.create({
     baseURL: this.#BASE_URL,
     params: {
-      per_page: 20,
+      per_page: 16,
       orientation: 'portrait',
       client_id: this.#API_KEY,
     },
